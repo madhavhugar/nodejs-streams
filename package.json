@@ -1,0 +1,16 @@
+{
+  "name": "nodejs-streams",
+  "version": "1.0.0",
+  "description": "experimentation with nodejs streams",
+  "main": "index.js",
+  "author": "madhavhugar",
+  "license": "MIT",
+  "scripts": {
+    "node": "ts-node"
+  },
+  "dependencies": {
+    "@types/node": "^14.0.21",
+    "ts-node": "^8.10.2",
+    "typescript": "^3.9.6"
+  }
+}
