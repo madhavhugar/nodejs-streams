@@ -1,23 +1,14 @@
 import * as fs from 'fs';
+import fileStatAsync from './filestat';
 
-const filename = './data/large-file.log';
-const readStream = fs.createReadStream('./data/large-file.log');
-const writeStream = fs.createWriteStream('./data/copy-large-file.log');
-
-async function fileStatPromise(filename: string): Promise<any> {
-  return new Promise((res, rej) => {
-    fs.stat(filename, (err, data) => {
-      if (err) {
-        return rej;
-      }
-      res(data);
-    });
-  })
-}
+const filename = 'large-file.log';
+const filepath = `./data/${filename}`;
+const readStream = fs.createReadStream(filepath);
+const writeStream = fs.createWriteStream(`./data/copy-${filename}`);
 
 (async () => {
   let counter = 1;
-  const fileMeta: fs.Stats = await fileStatPromise(filename);
+  const fileMeta = await fileStatAsync(filename);
   const fileSize = fileMeta.size;
 
   readStream.on('data', (chunk) => {
